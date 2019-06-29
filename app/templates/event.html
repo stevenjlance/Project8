@@ -1,0 +1,14 @@
+<html>
+    <head>
+      <title>Community Events Board</title>
+    </head>
+    <body>
+      <h1>Community Events Board</h1>
+      <div class="event-list">
+        <h1>{{ event.event }}</h1>
+        <h3>{{ event.date }}</h3>
+        {% if event.user %}<h4>Submitted by {{event.user}}</h4>{% endif%}
+        {{ event.about }}
+      </div>
+    </body>
+</html>

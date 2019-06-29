@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <title>Community Events Board</title>
+    </head>
+    <body>
+      {% if session %}
+      <h1>{{session['username']}}'s Community Events</h1>
+      {% else %}
+      <h1>No Events Available. Please <a href = '/'>Log In</a></h1>
+      {% endif %}
+      <div class="event-list">
+        <ul>
+          {% for event in events %}
+            <li>{{ event.event }} - {{ event.date }} {% if event.user %} ({{event.user}}) {% endif%}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </body>
+</html>

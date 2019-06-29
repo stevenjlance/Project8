@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Community Events Board</title>
+    </head>
+    <body>
+      <h1>Community Events Board</h1>
+      {% if session %}
+      <p><a href = '/myevents'>My Events</a></p>
+      {% endif %}
+      <div class="event-list">
+        <ul>
+          {% for event in events %}
+            <li><a href="/event/{{event._id}}">{{ event.event }}</a> - {{ event.date }} {% if event.user %} (<a href="/name/{{event.user}}">{{event.user}}</a>) {% endif%}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% if session %}
+        <p>You are logged in as {{session['username']}}.</p>
+        <p><a href = '/events/new'>Submit an Event!</a></p>
+        <p><a href ='/logout'>Logout</a></p>
+      {% else %}
+      <h2>Portal Log In!</h2>
+      <div>
+        <form action="/login" method="POST">
+          <label for="name">Name</label>
+          <input type="text" name="username">
+          <label for="password">Password</label>
+          <input type="password" name="password">
+          <input type="submit" value="Log In">
+        </form>
+      </div>
+      <p>No account? <a href ="/signup">Sign Up!</a></p>
+      {% endif %}
+    </body>
+</html>
